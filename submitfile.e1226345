@@ -1,0 +1,107 @@
+
+Loading components for TIF035
+
+Traceback (most recent call last):
+  File "./bulkAl.py", line 26, in <module>
+Traceback (most recent call last):
+  File "./bulkAl.py", line 26, in <module>
+Traceback (most recent call last):
+  File "./bulkAl.py", line 26, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "./bulkAl.py", line 26, in <module>
+  File "./bulkAl.py", line 26, in <module>
+Traceback (most recent call last):
+  File "./bulkAl.py", line 26, in <module>
+Traceback (most recent call last):
+  File "./bulkAl.py", line 26, in <module>
+Traceback (most recent call last):
+  File "./bulkAl.py", line 26, in <module>
+    energy = bulk.get_potential_energy()
+    energy = bulk.get_potential_energy()
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+    energy = bulk.get_potential_energy()
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+    energy = bulk.get_potential_energy()
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+    energy = bulk.get_potential_energy()
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+    energy = bulk.get_potential_energy()
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+    energy = bulk.get_potential_energy()
+    return self._calc.get_potential_energy(self)
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+    energy = bulk.get_potential_energy()
+    return self._calc.get_potential_energy(self)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/beda/sw/apps/ase/r2828/lib/python2.6/site-packages/ase/atoms.py", line 627, in get_potential_energy
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+    self.calculate(atoms, converge=True)
+    return self._calc.get_potential_energy(self)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+    self.calculate(atoms, converge=True)
+    return self._calc.get_potential_energy(self)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+    self.calculate(atoms, converge=True)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+    return self._calc.get_potential_energy(self)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+    raise KohnShamConvergenceError('Did not converge!')
+gpaw.KohnShamConvergenceError: Did not converge!
+    return self._calc.get_potential_energy(self)
+GPAW CLEANUP (node 0): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+    self.calculate(atoms, converge=True)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+    return self._calc.get_potential_energy(self)
+    raise KohnShamConvergenceError('Did not converge!')
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/aseinterface.py", line 38, in get_potential_energy
+    raise KohnShamConvergenceError('Did not converge!')
+gpaw.KohnShamConvergenceError: Did not converge!
+GPAW CLEANUP (node 4): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+    self.calculate(atoms, converge=True)
+gpaw.KohnShamConvergenceError: Did not converge!
+GPAW CLEANUP (node 1): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+    self.calculate(atoms, converge=True)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+    self.calculate(atoms, converge=True)
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+    raise KohnShamConvergenceError('Did not converge!')
+    gpaw.KohnShamConvergenceError: Did not converge!
+self.calculate(atoms, converge=True)
+GPAW CLEANUP (node 2): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+  File "/beda/sw/apps/GPAW/r9737-py26-i111-mkl102/lib/python2.6/site-packages/gpaw/paw.py", line 283, in calculate
+    raise KohnShamConvergenceError('Did not converge!')
+gpaw.KohnShamConvergenceError: Did not converge!
+GPAW CLEANUP (node 6): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+    raise KohnShamConvergenceError('Did not converge!')
+gpaw.KohnShamConvergenceError: Did not converge!
+    raise KohnShamConvergenceError('Did not converge!')
+GPAW CLEANUP (node 5): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+    raise KohnShamConvergenceError('Did not converge!')
+gpaw.KohnShamConvergenceError: Did not converge!
+GPAW CLEANUP (node 7): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+gpaw.KohnShamConvergenceError: Did not converge!
+GPAW CLEANUP (node 3): <class 'gpaw.KohnShamConvergenceError'> occurred.  Calling MPI_Abort!
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD 
+with errorcode 42.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun has exited due to process rank 4 with PID 21023 on
+node beda63-3.nfs.private exiting without calling "finalize". This may
+have caused other processes in the application to be
+terminated by signals sent by mpirun (as reported here).
+--------------------------------------------------------------------------
+[beda63-3.nfs.private:21018] 7 more processes have sent help message help-mpi-api.txt / mpi-abort
+[beda63-3.nfs.private:21018] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

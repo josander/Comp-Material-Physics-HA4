@@ -8,16 +8,16 @@ name = 'Al-fcc'
 a = 4.05  # fcc lattice paramter
 b = a / 2
 
-bulk = Atoms('Al',
-             cell=[[0, b, b],
-                   [b, 0, b],
-                   [b, b, 0]],
+bulk = Atoms('Mg',
+             cell=[[b, 0, 0],
+                   [0, b, 0],
+                   [0, 0, b]],
              pbc=True)
 
 view(bulk)
 
-k = 4
-calc = GPAW(mode=PW(300),       # cutoff
+k = 8
+calc = GPAW(mode=PW(500),       # cutoff
             kpts=(k, k, k),     # k-points
             txt=name + '.txt')  # output file
 
