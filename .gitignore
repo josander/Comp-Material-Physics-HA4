@@ -60,7 +60,7 @@ var/
 
 #ASE data #
  *.gpw
- submit.*
+ submitfile.*
 *.bak
 # OS generated files #
 .DS_Store
