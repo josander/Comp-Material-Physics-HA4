@@ -4,7 +4,7 @@ from ase import Atoms
 from ase.visualize import view
 from gpaw import GPAW, PW
 from ase.lattice.cubic import FaceCenteredCubic
-from gpaw.eigensolvers import Davidson
+from gpaw.eigensolvers import CG
 
 name = 'Al-fcc'
 a = 4.05  # fcc lattice paramter
@@ -25,7 +25,7 @@ k = 8
 calc = GPAW(mode=PW(500),       # cutoff
             #kpts=(k, k, k),     # k-points
             txt=name + '.txt',	# output file
-	    eigensolver=Davidson()) #lol  
+	    eigensolver=CG()) #lol  
 
 bulk.set_calculator(calc)
 
