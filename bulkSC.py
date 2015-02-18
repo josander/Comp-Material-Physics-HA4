@@ -6,7 +6,7 @@ from ase.lattice.cubic import FaceCenteredCubic
 from gpaw.eigensolvers import Davidson
 
 name = '100-SC'
-a = 3.50  # Lattice paramter for Mg
+a = 2.50  # Lattice paramter for Mg
 nbrPrimCells = 4
 
 k = 6
