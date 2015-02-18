@@ -17,13 +17,15 @@ calc = GPAW(mode=PW(300),       # cutoff
 
 
 while (a <= 5.5):
+	
+	2a = 2*a
 
 	bulk = Atoms(['Al','Al','Al','Al'], 
 		     positions=[(0,0,0),
 				(a,a,0),
 				(0,0,a),
 				(a,a,a)],
-	             cell=[2*a, a, 2*a],
+	             cell=[2a, a, 2a],
 	             pbc=True)
 
 	bulk.set_calculator(calc)
