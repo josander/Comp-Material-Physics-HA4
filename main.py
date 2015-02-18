@@ -3,29 +3,60 @@ from ase import Atoms
 from gpaw import GPAW, PW
 from gpaw.eigensolvers import Davidson
 
+
 """ Function for generatring a basis for an alloy in SC.
 
-alloyMix : Parameter to determine the muxture between Al and Mg
+alloyMix : Parameter to determine the mixture between Al and Mg
 	   0 = pure Al. 100 = pure Mg [0 25 75 100]
-latticeParam : The lattice parameterer in Å
-latticeConfig : Seperates the non-equivalent configurations in 
+latticeParam : The lattice parameterer in angstrom
+latticeConfig : Separates the non-equivalent configurations in 
 		the 50/50 case. [1 2]	 
 
 """
 def bulkSC(alloyMix, latticeParam, latticeConfig = 2): 
 
-	atomConfig = {1: atomArray = ['Mg','Al','Mg','Al'], # Atoms are place along the z-axis
- 		      2: atomArray = ['Mg','Al','Al','Mg']} # Alternating atoms 
+	# Define alternating atoms 
+	def one():
+		atomArray = ['Mg','Al','Mg','Al']
 
-	atomMix = {0: atomArray = ['Al','Al','Al','Al'],
-		   25: atomArray = ['Mg','Al','Al','Al'],
-		   50: atomArray = atomConfig[latticeConfig],
-		   75: atomArray =['Al','Mg','Mg','Mg'],
-		   100: atomArray =['Mg','Mg','Mg','Mg']}
+	def two():
+		atomArray = ['Mg','Al','Al','Mg']
 
+	atomConfig = {1: one,
+ 		      2: two,
+	} 
+
+
+	# Define the mixture of the alloy
+	def zero():
+		atomArray = ['Al','Al','Al','Al']
+
+	def twentyfive():
+		atomArray = ['Mg','Al','Al','Al']
+
+	def fifty():
+		atomArray = atomConfig[latticeConfig]
+
+	def seventyfive():
+		atomArray =['Al','Mg','Mg','Mg']
+		
+
+	def hundred():
+		atomArray =['Mg','Mg','Mg','Mg']
+
+	atomMix = {0: zero,
+		   25: twentyfive,
+		   50: fifty,
+		   75: seventyfive,
+		   100: hundred,
+		}
+		
+
+	# Call alloyMix to get array with atoms
   	atomMix[alloyMix] 
 
-
+	
+	# Create bulk material
 	bulk = Atoms(atomArray, 
 			positions=[(0,0,0),
 				(latticeParam,latticeParam,0),
@@ -33,31 +64,64 @@ def bulkSC(alloyMix, latticeParam, latticeConfig = 2):
 				(latticeParam,latticeParam,latticeParam)],
 			cell=[2*latticeParam, latticeParam, 2*latticeParam],
 			pbc=True) 
+
+	# Return the bulk-material
 	return(bulk)
 
 """ Function for generatring a basis for an alloy in BCC.
 
-alloyMix : Parameter to determine the muxture between Al and Mg
+alloyMix : Parameter to determine the mixture between Al and Mg
 	   0 = pure Al. 100 = pure Mg [0 25 75 100]
-latticeParam : The lattice parameterer in Å
+latticeParam : The lattice parameterer in angstrom
 latticeConfig : Seperates the non-equivalent configurations in 
 		the 50/50 case. [1 2]	 
 
 """
 def bulkBCC(alloyMix, latticeParam, latticeConfig = 2): 
 
-	atomConfig = {1: atomArray = ['Mg','MG','Al','Al'], # Atoms are place in rows
- 		      2: atomArray = ['Mg','Al','Mg','Al']} # Alternating atoms 
+	# Define alternating atoms 
+	def one():
+		atomArray = ['Mg','Mg','Al','Al']
 
-	atomMix = {0: atomArray = ['Al','Al','Al','Al'],
-		   25: atomArray = ['Mg','Al','Al','Al'],
-		   50: atomArray = atomConfig[latticeConfig],
-		   75: atomArray =['Al','Mg','Mg','Mg'],
-		   100: atomArray =['Mg','Mg','Mg','Mg']}
+	def two():
+		atomArray = ['Mg','Al','Mg','Al']
 
+	atomConfig = {1: one,
+ 		      2: two,
+		} # Alternating atoms 
+
+
+
+	# Define the mixture of the alloy
+	def zero():
+		atomArray = ['Al','Al','Al','Al']
+
+	def twentyfive():
+		atomArray = ['Mg','Al','Al','Al']
+
+	def fifty():
+		atomArray = atomConfig[latticeConfig]
+
+	def seventyfive():
+		atomArray =['Al','Mg','Mg','Mg']
+		
+
+	def hundred():
+		atomArray =['Mg','Mg','Mg','Mg']
+
+	atomMix = {0: zero,
+		   25: twentyfive,
+		   50: fifty,
+		   75: seventyfive,
+		   100: hundred,
+		}
+
+
+	# Call alloyMix to get array with atoms
   	atomMix[alloyMix] 
-	
 
+
+	# Create bulk material
 	bulk = Atoms(atomArray, 
 			positions=[(0,0,0),
 				(latticeParam,0,0),
@@ -66,24 +130,47 @@ def bulkBCC(alloyMix, latticeParam, latticeConfig = 2):
 			cell=[2*latticeParam, latticeParam, latticeParam],
 			pbc=True) 
 
+	# Return the bulk-material
 	return(bulk)
 
 """ Function for generatring a basis for an alloy in FCC.
 
 alloyMix : Parameter to determine the muxture between Al and Mg
 	   0 = pure Al. 100 = pure Mg [0 25 75 100]
-latticeParam : The lattice parameterer in Å 
+latticeParam : The lattice parameterer in angstrom
 
 """
 def bulkFCC(alloyMix, latticeParam): 
 
-	atomMix = {0: atomArray = ['Al','Al','Al','Al'],
-		   25: atomArray = ['Mg','Al','Al','Al'],
-		   50: atomArray = ['Mg','Mg','Al','Al'],
-		   75: atomArray =['Al','Mg','Mg','Mg'],
-		   100: atomArray =['Mg','Mg','Mg','Mg']}
+	# Define the mixture of the alloy
+	atomMix = {0: zero,
+		   25: twentyfive,
+		   50: fifty,
+		   75: seventyfive,
+		   100: hundred,
+		}
 
+	def zero():
+		atomArray = ['Al','Al','Al','Al']
+
+	def twentyfive():
+		atomArray = ['Mg','Al','Al','Al']
+
+	def fifty():
+		atomArray = ['Mg','Mg','Al','Al'],
+
+	def seventyfive():
+		atomArray =['Al','Mg','Mg','Mg']
+		
+	def hundred():
+		atomArray =['Mg','Mg','Mg','Mg']
+
+
+	# Call alloyMix to get array with atoms
   	atomMix[alloyMix] 
+
+
+	# Create bulk material
 	bulk = Atoms(atomArray, 
 	       	     positions=[(0,0,0),
 				(latticeParam/2,latticeParam/2,0),
@@ -92,9 +179,42 @@ def bulkFCC(alloyMix, latticeParam):
             	 cell=[latticeParam, latticeParam, latticeParam],
                	 pbc=True) 
 	
+
+	# Return the bulk-material
 	return(bulk)
 
+"""
+Main-function
+"""
 def main():
 	print('hej')
+
+	# Parameters for the calculator
+	name = 'bulkSC0'
+	k = 8
+	calc = GPAW(mode=PW(200),       # cutoff
+	           kpts=(k, k, k),     	# k-points
+	            txt=name + '.txt',	# output file
+		    eigensolver='dav') 
+
+	latticeParam = 4.0
+	nbrPrimCells = 4
+
+	while (latticeParam < 5.0):
+
+		# Generate different type of bulk systems
+		sc0 = bulkSC(0, latticeParam, 2)
+
+		# Get the energy and save output
+		sc0.set_calculator(calc)
+		energy = sc0.get_potential_energy()
+
+		# Divide the energy with number of primitive cells in the supercell
+		energy = energy/nbrPrimCells
+		calc.write(name + '.gpw')
+		print('Energy:', energy, 'eV')
+
+		# New lattice parameter
+		latticeParam = latticeParam + 0.5
 
 main()

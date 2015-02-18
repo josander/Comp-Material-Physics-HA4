@@ -6,6 +6,8 @@ from ase.lattice.cubic import FaceCenteredCubic
 from gpaw.eigensolvers import Davidson
 
 name = '100-FCC'
+
+
 a = 4.05  # Lattice paramter for Mg
 b = a / 2
 
