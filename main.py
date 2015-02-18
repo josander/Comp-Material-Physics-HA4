@@ -11,7 +11,7 @@ Main-function
 def main():
 
 	# Change these before running the script
-	alloyMix = 100
+	alloyMix = 75
 	struc = 'SC'
 	nbrPrimCells = 4
 
