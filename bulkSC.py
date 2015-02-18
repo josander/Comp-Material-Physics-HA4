@@ -6,7 +6,7 @@ from ase.lattice.cubic import FaceCenteredCubic
 from gpaw.eigensolvers import Davidson
 
 name = '100-SC'
-a = 4.00  # Lattice paramter for Mg
+a = 3.50  # Lattice paramter for Mg
 nbrPrimCells = 4
 
 k = 6
@@ -16,7 +16,7 @@ calc = GPAW(mode=PW(300),       # cutoff
 		 eigensolver='dav') 
 
 
-while (a <= 5.0):
+while (a <= 5.5):
 
 	bulk = Atoms(['Al','Al','Al','Al'], 
 		     positions=[(0,0,0),
