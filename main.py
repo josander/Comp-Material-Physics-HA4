@@ -10,17 +10,17 @@ Main-function
 """
 def main():
 
-	# Change these before running the script
-	alloyMix = 100
+	# CHANGE BEFORE RUNNING THE SCRIPT
+	alloyMix = 0
 	struc = 'SC'
 	nbrPrimCells = 4
 
 	name = str(alloyMix)+'-'+struc
-	latticeParam = 3.50  # Lattice paramter for Mg
+	latticeParam = 2.0  # Lattice paramter for Mg
 
-	k = 2
-	calc = GPAW(mode=PW(200),       # cutoff
-		         kpts=(k, k, k),     # k-points
+	k = 6
+	calc = GPAW(mode=PW(300),       	# cutoff
+		         kpts=(k, k, k),     	# k-points
 		         txt=name + '.txt',	# output file
 			 eigensolver='dav') 
 
@@ -29,12 +29,16 @@ def main():
 		# Generate bulk material
 		bulk = bulkSC(alloyMix, latticeParam, 2)
 
+		# Create calc-object
 		bulk.set_calculator(calc)
 
+		# Get potential energy
 		energy = bulk.get_potential_energy()
 
+		# Get energy per primitive cell
 		energy = energy/nbrPrimCells
 
+		# Print to output-file
 		print("%f \t %f" %(energy, latticeParam))
 
 		# New lattice parameter
