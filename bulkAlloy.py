@@ -136,7 +136,7 @@ alloyMix : Parameter to determine the muxture between Al and Mg
 latticeParam : The lattice parameterer in angstrom
 
 """
-def bulkFCC(alloyMix, latticeParam): 
+def bulkFCC(alloyMix, latticeParam, latticeConfig = 2): 
 
 	def zero():
 		return( ['Al','Al','Al','Al'] )
