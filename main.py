@@ -12,7 +12,7 @@ latticeConfig : Seperates the non-equivalent configurations in
 		the 50/50 case. [1 2]	 
 
 """
-def bulkSC(alloyMix, latticeParam, latticeConfig): 
+def bulkSC(alloyMix, latticeParam, latticeConfig = 2): 
 
 	atomConfig = {1: atomArray = ['Mg','Al','Mg','Al'], # Atoms are place along the z-axis
  		      2: atomArray = ['Mg','Al','Al','Mg']} # Alternating atoms 
@@ -44,7 +44,7 @@ latticeConfig : Seperates the non-equivalent configurations in
 		the 50/50 case. [1 2]	 
 
 """
-def bulkBCC(alloyMix, latticeParam, latticeConfig): 
+def bulkBCC(alloyMix, latticeParam, latticeConfig = 2): 
 
 	atomConfig = {1: atomArray = ['Mg','MG','Al','Al'], # Atoms are place in rows
  		      2: atomArray = ['Mg','Al','Mg','Al']} # Alternating atoms 
