@@ -17,10 +17,10 @@ def bulkSC(alloyMix, latticeParam, latticeConfig = 2):
 
 	# Define alternating atoms 
 	def one():
-		atomArray = ['Mg','Al','Mg','Al']
+		return(['Mg','Al','Mg','Al'])
 
 	def two():
-		atomArray = ['Mg','Al','Al','Mg']
+		return( ['Mg','Al','Al','Mg'])
 
 	atomConfig = {1: one,
  		      2: two,
@@ -29,20 +29,19 @@ def bulkSC(alloyMix, latticeParam, latticeConfig = 2):
 
 	# Define the mixture of the alloy
 	def zero():
-		atomArray = ['Al','Al','Al','Al']
+		return( ['Al','Al','Al','Al'])
 
 	def twentyfive():
-		atomArray = ['Mg','Al','Al','Al']
+		return(['Mg','Al','Al','Al'])
 
 	def fifty():
-		atomArray = atomConfig[latticeConfig]
+		return( atomConfig[latticeConfig]())
 
 	def seventyfive():
-		atomArray =['Al','Mg','Mg','Mg']
+		return( ['Al','Mg','Mg','Mg'])
 		
-
 	def hundred():
-		atomArray =['Mg','Mg','Mg','Mg']
+		return(['Mg','Mg','Mg','Mg'])
 
 	atomMix = {0: zero,
 		   25: twentyfive,
@@ -53,7 +52,7 @@ def bulkSC(alloyMix, latticeParam, latticeConfig = 2):
 		
 
 	# Call alloyMix to get array with atoms
-  	atomMix[alloyMix] 
+  	atomArray = atomMix[alloyMix]() 
 
 	
 	# Create bulk material
@@ -81,10 +80,10 @@ def bulkBCC(alloyMix, latticeParam, latticeConfig = 2):
 
 	# Define alternating atoms 
 	def one():
-		atomArray = ['Mg','Mg','Al','Al']
+		return (['Mg','Mg','Al','Al'])
 
 	def two():
-		atomArray = ['Mg','Al','Mg','Al']
+		return(['Mg','Al','Mg','Al'])
 
 	atomConfig = {1: one,
  		      2: two,
@@ -94,20 +93,20 @@ def bulkBCC(alloyMix, latticeParam, latticeConfig = 2):
 
 	# Define the mixture of the alloy
 	def zero():
-		atomArray = ['Al','Al','Al','Al']
+		return(['Al','Al','Al','Al'])
 
 	def twentyfive():
-		atomArray = ['Mg','Al','Al','Al']
+		return(['Mg','Al','Al','Al'])
 
 	def fifty():
-		atomArray = atomConfig[latticeConfig]
+		return(atomConfig[latticeConfig]())
 
 	def seventyfive():
-		atomArray =['Al','Mg','Mg','Mg']
+		return(['Al','Mg','Mg','Mg'])
 		
 
 	def hundred():
-		atomArray =['Mg','Mg','Mg','Mg']
+		return(['Mg','Mg','Mg','Mg'])
 
 	atomMix = {0: zero,
 		   25: twentyfive,
@@ -118,7 +117,7 @@ def bulkBCC(alloyMix, latticeParam, latticeConfig = 2):
 
 
 	# Call alloyMix to get array with atoms
-  	atomMix[alloyMix] 
+	atomArray = atomMix[alloyMix]()
 
 
 	# Create bulk material
@@ -142,6 +141,20 @@ latticeParam : The lattice parameterer in angstrom
 """
 def bulkFCC(alloyMix, latticeParam): 
 
+	def zero():
+		return( ['Al','Al','Al','Al'] )
+	def twentyfive():
+		return( ['Mg','Al','Al','Al'] )
+	def fifty():
+		return(['Mg','Mg','Al','Al'] )
+	def seventyfive():
+		return( ['Al','Mg','Mg','Mg'] )
+	def hundred():
+		return( ['Mg','Mg','Mg','Mg'] )
+
+
+
+
 	# Define the mixture of the alloy
 	atomMix = {0: zero,
 		   25: twentyfive,
@@ -150,25 +163,8 @@ def bulkFCC(alloyMix, latticeParam):
 		   100: hundred,
 		}
 
-	def zero():
-		atomArray = ['Al','Al','Al','Al']
-
-	def twentyfive():
-		atomArray = ['Mg','Al','Al','Al']
-
-	def fifty():
-		atomArray = ['Mg','Mg','Al','Al'],
-
-	def seventyfive():
-		atomArray =['Al','Mg','Mg','Mg']
-		
-	def hundred():
-		atomArray =['Mg','Mg','Mg','Mg']
-
-
 	# Call alloyMix to get array with atoms
-  	atomMix[alloyMix] 
-
+	atomArray = atomMix[alloyMix]()
 
 	# Create bulk material
 	bulk = Atoms(atomArray, 
@@ -176,8 +172,8 @@ def bulkFCC(alloyMix, latticeParam):
 				(latticeParam/2,latticeParam/2,0),
 				(0,latticeParam/2,latticeParam/2),
 				(latticeParam/2,0,latticeParam/2)],
-            	 cell=[latticeParam, latticeParam, latticeParam],
-               	 pbc=True) 
+            	 	cell=[latticeParam, latticeParam, latticeParam],
+               	 	pbc=True) 
 	
 
 	# Return the bulk-material
@@ -187,8 +183,15 @@ def bulkFCC(alloyMix, latticeParam):
 Main-function
 """
 def main():
-	print('hej')
+	alloyMix = 75
+	latticeParam = 4
 
+	bulk = bulkSC(alloyMix, latticeParam, 2)
+	test = bulk.get_atomic_numbers()
+	
+	print(test)
+	
+"""
 	# Parameters for the calculator
 	name = 'bulkSC0'
 	k = 8
@@ -216,5 +219,6 @@ def main():
 
 		# New lattice parameter
 		latticeParam = latticeParam + 0.5
+"""
 
 main()
