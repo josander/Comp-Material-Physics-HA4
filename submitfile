@@ -8,4 +8,5 @@ cd $PBS_O_WORKDIR
 module purge
 module load COURSES/TIF035
 export GPAW_SETUP_PATH=$PBS_O_WORKDIR:$GPAW_SETUP_PATH
-mpirun gpaw-python ./bulkAl.py 
+#mpirun gpaw-python ./bulkAl.py 
+python ./bulkFCC.py 
