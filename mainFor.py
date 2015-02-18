@@ -18,12 +18,12 @@ def main():
 		
 		
 		# Change these before running the script !!!
-		nbrPrimCells = 1 
+		nbrPrimCells = 1
 
 		name = str(alloyMix)+'-'+struc
 		latticeParam = 2.0  # Lattice paramter for Mg
 
-		k = 2
+		k = 8
 		calc = GPAW(mode=PW(200),       # cutoff
 			         kpts=(k, k, k),     # k-points
 			         txt=name + '.txt',	# output file
@@ -41,7 +41,7 @@ def main():
 
 			energy = energy/nbrPrimCells
 
-			print("%f \t %f \t %d" %(energy, latticeParam, alloyMix))
+			print("%f \t %f \t %s \t %d" % (energy, latticeParam,struc, alloyMix))
 
 			# New lattice parameter
 			latticeParam = latticeParam + 0.1
