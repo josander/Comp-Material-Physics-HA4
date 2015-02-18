@@ -9,42 +9,35 @@ from bulkAlloy import *
 Main-function
 """
 def main():
-	alloyMix = 75
-	latticeParam = 4
 
-	bulk = bulkSC(alloyMix, latticeParam, 2)
-	test = bulk.get_atomic_numbers()
-	
-	print(test)
-	
-"""
-	# Parameters for the calculator
-	name = 'bulkSC0'
-	k = 8
-	calc = GPAW(mode=PW(200),       # cutoff
-	           kpts=(k, k, k),     	# k-points
-	            txt=name + '.txt',	# output file
-		    eigensolver='dav') 
-
-	latticeParam = 4.0
+	# Change these before running the script
+	alloyMix = 100
+	struc = 'SC'
 	nbrPrimCells = 4
 
-	while (latticeParam < 5.0):
+	name = str(alloyMix)+'-'+struc
+	latticeParam = 3.50  # Lattice paramter for Mg
 
-		# Generate different type of bulk systems
-		sc0 = bulkSC(0, latticeParam, 2)
+	k = 2
+	calc = GPAW(mode=PW(200),       # cutoff
+		         kpts=(k, k, k),     # k-points
+		         txt=name + '.txt',	# output file
+			 eigensolver='dav') 
 
-		# Get the energy and save output
-		sc0.set_calculator(calc)
-		energy = sc0.get_potential_energy()
+	while (latticeParam <= 5.5):
 
-		# Divide the energy with number of primitive cells in the supercell
+		# Generate bulk material
+		bulk = bulkSC(alloyMix, latticeParam, 2)
+
+		bulk.set_calculator(calc)
+
+		energy = bulk.get_potential_energy()
+
 		energy = energy/nbrPrimCells
-		calc.write(name + '.gpw')
-		print('Energy:', energy, 'eV')
+
+		print("%f \t %f" %(energy, latticeParam))
 
 		# New lattice parameter
-		latticeParam = latticeParam + 0.5
-"""
+		latticeParam = latticeParam + 0.1
 
 main()
