@@ -10,30 +10,31 @@ Main-function
 """
 def main():
 	
-	mix = [0, 25, 50, 75, 100]
-	# Change these before running the script !!!	
-	struc = 'FCC'
+	# CHANGE BEFORE RUNNING THE SCRIPT	
+	struc = 'SC'
+
+	mix = [50]
 
 	for alloyMix in mix:
 		
 		
-		# Change these before running the script !!!
-		nbrPrimCells = 1
+		# CHANGE BEFORE RUNNING THE SCRIPT
+		nbrPrimCells = 4
 
-		name = str(alloyMix)+'-'+struc
+		name = struc+'-'+str(alloyMix)
 		latticeParam = 2.0  # Lattice paramter for Mg
 
-		k = 8
-		calc = GPAW(mode=PW(200),       # cutoff
-			         kpts=(k, k, k),     # k-points
+		k = 6
+		calc = GPAW(mode=PW(300),       	# cutoff
+			         kpts=(k, k, k),     	# k-points
 			         txt=name + '.txt',	# output file
 				 eigensolver='dav') 
 
-		while (latticeParam <= 5.5):
+		while (latticeParam <= 4.5):
 
-			# Generate bulk material
-			# Change these before running the script !!!			
-			bulk = bulkFCC(alloyMix, latticeParam, 2)
+			# CHANGE BEFORE RUNNING THE SCRIPT
+			# Generate bulk material			
+			bulk = bulkSC(alloyMix, latticeParam, 1)
 
 			bulk.set_calculator(calc)
 
