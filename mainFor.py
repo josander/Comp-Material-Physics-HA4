@@ -12,14 +12,9 @@ def main():
 	
 	# CHANGE BEFORE RUNNING THE SCRIPT	
 	struc = 'BCC'
-
 	mix = [50]
 
 	for alloyMix in mix:
-		
-		
-		# CHANGE BEFORE RUNNING THE SCRIPT
-		nbrPrimCells = 2
 
 		name = struc+'-'+str(alloyMix)
 		latticeParam = 2.0  # Lattice paramter for Mg
@@ -40,7 +35,7 @@ def main():
 
 			energy = bulk.get_potential_energy()
 
-			energy = energy/nbrPrimCells
+			energy = energy
 
 			print("%f \t %f \t %d" % (energy, latticeParam, alloyMix))
 

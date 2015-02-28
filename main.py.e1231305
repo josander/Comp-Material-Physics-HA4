@@ -1,0 +1,10 @@
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 1: from: command not found
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 2: from: command not found
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 3: from: command not found
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 4: from: command not found
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 5: from: command not found
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 10: 
+Main-function
+: command not found
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 11: syntax error near unexpected token `('
+/var/spool/PBS/mom_priv/jobs/1231305.beda-s1.nfs.private.SC: line 11: `def main():'

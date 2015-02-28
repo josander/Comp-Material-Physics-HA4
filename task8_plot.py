@@ -4,7 +4,7 @@ from ase.dft.dos import DOS
 from gpaw import GPAW, restart 
 import pylab as p
 
-slab, calc = restart('silicon.gpw')
+slab, calc = restart('SC-0.gpw')
 e, dos = calc.get_dos(spin=0, npts=2001, width=0.1)
 e_f = calc.get_fermi_level()
 

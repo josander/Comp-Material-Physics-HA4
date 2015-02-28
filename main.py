@@ -11,20 +11,19 @@ Main-function
 def main():
 
 	# CHANGE BEFORE RUNNING THE SCRIPT
-	alloyMix = 0
+	alloyMix = 25
 	struc = 'SC'
-	nbrPrimCells = 4
 
-	name = str(alloyMix)+'-'+struc
-	latticeParam = 2.0  # Lattice paramter for Mg
+	name = struc+'-'+str(alloyMix)
+	latticeParam = 3.0  # Lattice paramter for Mg
 
-	k = 6
+	k = 4
 	calc = GPAW(mode=PW(300),       	# cutoff
 		         kpts=(k, k, k),     	# k-points
 		         txt=name + '.txt',	# output file
 			 eigensolver='dav') 
 
-	while (latticeParam <= 5.5):
+	while (latticeParam <= 4.5):
 
 		# Generate bulk material
 		bulk = bulkSC(alloyMix, latticeParam, 2)
@@ -36,12 +35,18 @@ def main():
 		energy = bulk.get_potential_energy()
 
 		# Get energy per primitive cell
-		energy = energy/nbrPrimCells
+		energy = energy
 
 		# Print to output-file
 		print("%f \t %f" %(energy, latticeParam))
 
 		# New lattice parameter
 		latticeParam = latticeParam + 0.1
+
+	# Define calc-file
+	fileName = name+'.gpw'
+
+	# Save calculator to be able to plot the bandgap
+	calc.write(fileName, mode='all')
 
 main()
