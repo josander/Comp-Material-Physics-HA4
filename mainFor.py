@@ -11,7 +11,7 @@ Main-function
 def main():
 	
 	# CHANGE BEFORE RUNNING THE SCRIPT	
-	struc = 'SC'
+	struc = 'BCC'
 
 	mix = [50]
 
@@ -19,7 +19,7 @@ def main():
 		
 		
 		# CHANGE BEFORE RUNNING THE SCRIPT
-		nbrPrimCells = 4
+		nbrPrimCells = 2
 
 		name = struc+'-'+str(alloyMix)
 		latticeParam = 2.0  # Lattice paramter for Mg
@@ -42,7 +42,7 @@ def main():
 
 			energy = energy/nbrPrimCells
 
-			print("%f \t %f \t %s \t %d" % (energy, latticeParam,struc, alloyMix))
+			print("%f \t %f \t %d" % (energy, latticeParam, alloyMix))
 
 			# New lattice parameter
 			latticeParam = latticeParam + 0.1
