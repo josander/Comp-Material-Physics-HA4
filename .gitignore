@@ -59,7 +59,7 @@ var/
 *.egg
 
 #ASE data #
- *.gpw
+*.gpw
 submitfile.*
 *.bak
 # OS generated files #
