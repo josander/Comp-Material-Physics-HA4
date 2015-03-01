@@ -140,16 +140,18 @@ def bulkFCC(alloyMix, latticeParam, latticeConfig = 2):
 
 	def zero():
 		return( ['Al','Al','Al','Al'] )
+
 	def twentyfive():
 		return( ['Mg','Al','Al','Al'] )
+
 	def fifty():
 		return(['Mg','Mg','Al','Al'] )
+
 	def seventyfive():
 		return( ['Al','Mg','Mg','Mg'] )
+
 	def hundred():
 		return( ['Mg','Mg','Mg','Mg'] )
-
-
 
 
 	# Define the mixture of the alloy
@@ -163,12 +165,14 @@ def bulkFCC(alloyMix, latticeParam, latticeConfig = 2):
 	# Call alloyMix to get array with atoms
 	atomArray = atomMix[alloyMix]()
 
+	b = latticeParam/2
+
 	# Create bulk material
 	bulk = Atoms(atomArray, 
 	       	     positions=[(0,0,0),
-				(latticeParam/2,latticeParam/2,0),
-				(0,latticeParam/2,latticeParam/2),
-				(latticeParam/2,0,latticeParam/2)],
+				(b,b,0),
+				(0,b,b),
+				(b,0,b)],
             	 	cell=[latticeParam, latticeParam, latticeParam],
                	 	pbc=True) 
 	
@@ -181,16 +185,18 @@ def bulkRockSalt(alloyMix, latticeParam):
 
 	def zero():
 		return( ['Al','Al','Al','Al','S','S','S','S'] )
+
 	def twentyfive():
 		return( ['Mg','Al','Al','Al','S','S','S','S'] )
+
 	def fifty():
 		return(['Mg','Mg','Al','Al','S','S','S','S'] )
+
 	def seventyfive():
 		return( ['Al','Mg','Mg','Mg','S','S','S','S'] )
+
 	def hundred():
 		return( ['Mg','Mg','Mg','Mg','S','S','S','S'] )
-
-
 
 
 	# Define the mixture of the alloy
@@ -201,21 +207,23 @@ def bulkRockSalt(alloyMix, latticeParam):
 		   100: hundred,
 		}
 
-	atomArray = atomMix[alloyMix]
+	# Call alloyMix to get array with atoms
+	atomArray = atomMix[alloyMix]()
+	
+	b = latticeParam/2
 
 	# Create bulk material
 	bulk = Atoms(atomArray, 
 	       	     positions=[(0,0,0),
-				(latticeParam/2,0,0),
-				(latticeParam/2,latticeParam/2,0),
-				(0,latticeParam/2,0),
-				(0,latticeParam/2,latticeParam/2),
-				(0,0,latticeParam/2),
-				(latticeParam/2,0,latticeParam/2),
-				(latticeParam/2,latticeParam/2,latticeParam/2)],
+				(b,b,0),
+				(0,b,b),
+				(b,0,b),
+				(b,b,b),
+				(0,b,0),
+				(0,0,b),
+				(b,0,0)],
             	 	cell=[latticeParam, latticeParam, latticeParam],
                	 	pbc=True) 
-	
 
 	# Return the bulk-material
 	return(bulk)
