@@ -175,3 +175,47 @@ def bulkFCC(alloyMix, latticeParam, latticeConfig = 2):
 
 	# Return the bulk-material
 	return(bulk)
+
+
+def bulkRockSalt(alloyMix, latticeParam):
+
+	def zero():
+		return( ['Al','Al','Al','Al','S','S','S','S'] )
+	def twentyfive():
+		return( ['Mg','Al','Al','Al','S','S','S','S'] )
+	def fifty():
+		return(['Mg','Mg','Al','Al','S','S','S','S'] )
+	def seventyfive():
+		return( ['Al','Mg','Mg','Mg','S','S','S','S'] )
+	def hundred():
+		return( ['Mg','Mg','Mg','Mg','S','S','S','S'] )
+
+
+
+
+	# Define the mixture of the alloy
+	atomMix = {0: zero,
+		   25: twentyfive,
+		   50: fifty,
+		   75: seventyfive,
+		   100: hundred,
+		}
+
+	atomArray = atomMix[alloyMix]
+
+	# Create bulk material
+	bulk = Atoms(atomArray, 
+	       	     positions=[(0,0,0),
+				(latticeParam/2,0,0),
+				(latticeParam/2,latticeParam/2,0),
+				(0,latticeParam/2,0),
+				(0,latticeParam/2,latticeParam/2),
+				(0,0,latticeParam/2),
+				(latticeParam/2,0,latticeParam/2),
+				(latticeParam/2,latticeParam/2,latticeParam/2)],
+            	 	cell=[latticeParam, latticeParam, latticeParam],
+               	 	pbc=True) 
+	
+
+	# Return the bulk-material
+	return(bulk)
