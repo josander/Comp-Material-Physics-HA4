@@ -116,13 +116,14 @@ def bulkBCC(alloyMix, latticeParam, latticeConfig = 2):
 	# Call alloyMix to get array with atoms
 	atomArray = atomMix[alloyMix]()
 
+	b = latticeParam/2
 
 	# Create bulk material
 	bulk = Atoms(atomArray, 
 			positions=[(0,0,0),
 				(latticeParam,0,0),
-				(latticeParam/2,latticeParam/2,latticeParam/2),
-				(latticeParam*3/2,latticeParam/2,latticeParam/2)],
+				(b,b,b),
+				(latticeParam*3/2,b,b)],
 			cell=[2*latticeParam, latticeParam, latticeParam],
 			pbc=True) 
 
@@ -180,7 +181,13 @@ def bulkFCC(alloyMix, latticeParam, latticeConfig = 2):
 	# Return the bulk-material
 	return(bulk)
 
+""" Function for generatring a basis for a compound of Al_x Mg_y S_4 in a rock salt structure. x + y = 4.
 
+alloyMix : Parameter to determine the mixture between Al and Mg
+	   0 = pure Al. 100 = pure Mg [0 25 75 100]
+latticeParam : The lattice parameterer in angstrom
+
+"""
 def bulkRockSalt(alloyMix, latticeParam):
 
 	def zero():
