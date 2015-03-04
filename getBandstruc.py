@@ -5,29 +5,31 @@ from ase.dft.kpoints import ibz_points, get_bandpath
 from gpaw import GPAW
 from gpaw.eigensolvers import CG
 
-alloyMix = 100 
+mix = [75, 100]
 struc = 'Rock'
 
-name = struc+'-'+str(alloyMix)
+for alloyMix in mix:
 
-points = ibz_points['fcc']
-G = points['Gamma']
-X = points['X']
-W = points['W']
-K = points['K']
-L = points['L']
+	name = struc+'-'+str(alloyMix)
 
-calc = GPAW(name+'.gpw',
-            txt=name+'BS.txt',
-            parallel={'domain': 1},
-            fixdensity=True,
-            usesymm=None,
-	    eigensolver= 'cg',
-            maxiter=250,
-            convergence={'bands': 8})
+	points = ibz_points['fcc']
+	G = points['Gamma']
+	X = points['X']
+	W = points['W']
+	K = points['K']
+	L = points['L']
 
-kpts, x, X = get_bandpath([W, L, G, X, W, K], calc.atoms.cell)
-calc.set(kpts=kpts)
-calc.get_potential_energy()
-e_kn = np.array([calc.get_eigenvalues(k) for k in range(len(kpts))])
-pickle.dump((x, X, e_kn), open('eigenvalues100.pckl', 'w'))
+	calc = GPAW(name+'.gpw',
+	            txt=name+'BS.txt',
+	            parallel={'domain': 1},
+	            fixdensity=True,
+	            usesymm=None,
+		    eigensolver= 'cg',
+	            maxiter=250)
+	            #convergence={'bands': 32})
+
+	kpts, x, X = get_bandpath([W, L, G, X, W, K], calc.atoms.cell)
+	calc.set(kpts=kpts)
+	calc.get_potential_energy()
+	e_kn = np.array([calc.get_eigenvalues(k) for k in range(len(kpts))])
+	pickle.dump((x, X, e_kn), open('eigenvaluesMany'+str(alloyMix)+'.pckl', 'w'))

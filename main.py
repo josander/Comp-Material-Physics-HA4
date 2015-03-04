@@ -8,48 +8,49 @@ import numpy as np
 
 
 """
-Main-function
+Main-function to generate a bulk material with rock salt structure
 """
 def main():
 
 	# CHANGE BEFORE RUNNING THE SCRIPT
-	# Percentage of magnesium in the substrate X, such that the compound is X and S
-	alloyMix = 75 
+	# Percentage of magnesium in the substrate X, such that the compound is X4S4
+	mix = [75, 100] 
 	struc = 'Rock'
 
-	name = struc+'-'+str(alloyMix)
-	latticeParam = 4.3  # Best lattice parameter
+	for alloyMix in mix:
 
-	# Generate bulk material
-	bulk = bulkRockSalt(alloyMix,latticeParam)
+		name = struc+'-'+str(alloyMix)
+		latticeParam = 5.1  # Best lattice parameter
 
-	#
-	cell = bulk.get_cell()
-	traj = PickleTrajectory(name + '.traj', 'w')
+		# Generate bulk material
+		bulk = bulkRockSalt(alloyMix,latticeParam)
 
-	# Define the calculator-object
-	k = 10
-	calc = GPAW(mode=PW(500),       	# cutoff
-		         kpts=(k, k, k),     	# k-points
-			 nbands = 64,		# number of bands, rock should be 64
-		         txt=name + '.txt',	# output file
-			 eigensolver='dav') 
+		cell = bulk.get_cell()
+		traj = PickleTrajectory(name + '.traj', 'w')
 
-	# Create calc-object
-	bulk.set_calculator(calc)
+		# Define the calculator-object
+		k = 10
+		calc = GPAW(mode=PW(500),       	# cutoff
+			         kpts=(k, k, k),     	# k-points
+				 nbands = 64,		# number of bands, rock should be 64
+			         txt=name + '.txt',	# output file
+				 eigensolver='dav') 
 
-	# Get potential energy
-	energy = bulk.get_potential_energy()
+		# Create calc-object
+		bulk.set_calculator(calc)
 
-	# Define calc-file
-	fileName = name+'.gpw'
+		# Get potential energy
+		energy = bulk.get_potential_energy()
 
-	# Save calculator to be able to plot the bandgap
-	calc.write(fileName, mode='all')
+		# Define calc-file
+		fileName = name+'.gpw'
 
-	# Save the traj-file
-	for x in np.linspace(0.95, 1.05, 7):
-	  bulk.set_cell(cell * x, scale_atoms=True)
-	  traj.write(bulk)
+		# Save calculator to be able to plot the bandgap
+		calc.write(fileName, mode='all')
+
+		# Save the traj-file
+		for x in np.linspace(0.95, 1.05, 7):
+		  bulk.set_cell(cell * x, scale_atoms=True)
+		  traj.write(bulk)
 
 main()

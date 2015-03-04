@@ -11,33 +11,31 @@ Main-function
 def main():
 	
 	# CHANGE BEFORE RUNNING THE SCRIPT	
-	struc = 'BCC'
-	mix = [50]
+	struc = 'Rock'
+	mix = [75, 100]
 
 	for alloyMix in mix:
 
 		name = struc+'-'+str(alloyMix)
-		latticeParam = 2.0  # Lattice paramter for Mg
+		latticeParam = 4.5  # Lattice paramter for Mg
 
-		k = 6
-		calc = GPAW(mode=PW(300),       	# cutoff
+		k = 10
+		calc = GPAW(mode=PW(500),       	# cutoff
 			         kpts=(k, k, k),     	# k-points
 			         txt=name + '.txt',	# output file
 				 eigensolver='dav') 
 
-		while (latticeParam <= 4.5):
+		while (latticeParam <= 5.5):
 
 			# CHANGE BEFORE RUNNING THE SCRIPT
 			# Generate bulk material			
-			bulk = bulkSC(alloyMix, latticeParam, 1)
+			bulk = bulkRockSalt(alloyMix, latticeParam)
 
 			bulk.set_calculator(calc)
 
 			energy = bulk.get_potential_energy()
 
-			energy = energy
-
-			print("%f \t %f \t %d" % (energy, latticeParam, alloyMix))
+			print("%f \t %f \t %d" %(energy, latticeParam, alloyMix))
 
 			# New lattice parameter
 			latticeParam = latticeParam + 0.1
